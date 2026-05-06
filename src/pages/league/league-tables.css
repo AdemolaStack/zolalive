@@ -1,0 +1,352 @@
+/* ═══════════════════════════════════════════════
+   ZOLA LIVE — League Tables & Top Scorers
+   ═══════════════════════════════════════════════ */
+
+/* ── Loading State ───────────────────────────── */
+.table-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: var(--color-text-2);
+  font-size: 13px;
+}
+
+.table-spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface-4);
+  border-top-color: var(--color-accent);
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Empty State ─────────────────────────────── */
+.table-empty {
+  padding: 60px 20px;
+  text-align: center;
+  border: 1px dashed var(--color-border-hover);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+}
+
+.table-empty-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-2);
+  margin-bottom: 6px;
+}
+
+.table-empty-sub {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* ═══════════════════════════════════════════════
+   STANDINGS TABLE
+   ═══════════════════════════════════════════════ */
+
+.standings-wrapper {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.standings-table thead {
+  background: var(--color-surface-2);
+}
+
+.standings-table th {
+  padding: 12px 10px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.standings-table th.col-team {
+  text-align: left;
+  padding-left: 14px;
+}
+
+.standings-table td {
+  padding: 11px 10px;
+  text-align: center;
+  color: var(--color-text-2);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+}
+
+.standings-row:hover td {
+  background: var(--color-surface-2);
+}
+
+.standings-row:last-child td {
+  border-bottom: none;
+}
+
+/* Position badge */
+.col-pos {
+  width: 44px;
+}
+
+.pos-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--color-surface-3);
+  color: var(--color-text-2);
+}
+
+.pos-badge.champions {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.pos-badge.relegation {
+  background: var(--color-live-light);
+  color: var(--color-live-text);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Team column */
+.col-team {
+  text-align: left !important;
+  padding-left: 14px !important;
+}
+
+.team-name {
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.team-short {
+  display: none;
+}
+
+/* Points column */
+.col-pts {
+  font-family: var(--font-display);
+  font-weight: 800 !important;
+  color: var(--color-text-1) !important;
+}
+
+/* Goal difference colors */
+.gd-positive { color: var(--color-accent); }
+.gd-negative { color: var(--color-live-text); }
+
+/* ═══════════════════════════════════════════════
+   TOP SCORERS
+   ═══════════════════════════════════════════════ */
+
+.scorers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scorer-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.scorer-card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-2);
+}
+
+.scorer-card.top-three {
+  border-color: var(--color-border-hover);
+}
+
+/* Rank */
+.scorer-rank {
+  flex-shrink: 0;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.rank-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rank-1 {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #000;
+  box-shadow: 0 2px 12px rgba(251, 191, 36, 0.3);
+}
+
+.rank-2 {
+  background: linear-gradient(135deg, #d1d5db, #9ca3af);
+  color: #000;
+  box-shadow: 0 2px 12px rgba(156, 163, 175, 0.3);
+}
+
+.rank-3 {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(217, 119, 6, 0.3);
+}
+
+.rank-num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-3);
+}
+
+/* Player info */
+.scorer-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scorer-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scorer-team {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* Stats */
+.scorer-stats {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 36px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-1);
+  line-height: 1;
+}
+
+.stat-goals .stat-value {
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+}
+
+/* ── Tab Buttons ─────────────────────────────── */
+.league-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.league-tab {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-2);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.league-tab:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text-1);
+  border-color: var(--color-border-hover);
+}
+
+.league-tab.active {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 640px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 9px 6px;
+    font-size: 12px;
+  }
+
+  .team-name { display: none; }
+  .team-short { display: inline; font-weight: 600; color: var(--color-text-1); }
+
+  .scorer-card {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .scorer-stats {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,25 @@
+/* ═══════════════════════════════════════════════
+   ZOLA LIVE — Home Page Styles
+   ═══════════════════════════════════════════════ */
+
+.home-section {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.home-section-header {
+  margin-bottom: 24px;
+}
+
+.home-match-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .home-match-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

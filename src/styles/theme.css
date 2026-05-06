@@ -1,0 +1,79 @@
+/* ═══════════════════════════════════════════════
+   ZOLA LIVE — Design Tokens
+   Premium dark sports-streaming theme
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* ── Color Palette ─────────────────────────── */
+  --color-bg:           #06080d;
+  --color-bg-elevated:  #0b0e16;
+  --color-surface:      #0f1219;
+  --color-surface-2:    #151a24;
+  --color-surface-3:    #1c2230;
+  --color-surface-4:    #232a3a;
+
+  /* Text */
+  --color-text-1:       #f0f2f5;
+  --color-text-2:       #8b92a5;
+  --color-text-3:       #565e73;
+
+  /* Borders */
+  --color-border:       rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-strong:rgba(255, 255, 255, 0.18);
+
+  /* Accent — Emerald */
+  --color-accent:       #10b981;
+  --color-accent-bright:#34d399;
+  --color-accent-dim:   #059669;
+  --color-accent-light: rgba(16, 185, 129, 0.1);
+  --color-accent-text:  #10b981;
+  --color-accent-glow:  rgba(16, 185, 129, 0.25);
+
+  /* Live indicator */
+  --color-live:         #ef4444;
+  --color-live-light:   rgba(239, 68, 68, 0.12);
+  --color-live-text:    #fca5a5;
+  --color-live-glow:    rgba(239, 68, 68, 0.35);
+
+  /* ── Glass Effect Tokens ───────────────────── */
+  --glass-bg:           rgba(255, 255, 255, 0.04);
+  --glass-bg-hover:     rgba(255, 255, 255, 0.06);
+  --glass-border:       rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.14);
+  --glass-blur:         24px;
+  --glass-saturate:     180%;
+  --glass-inner-glow:   inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* ── Shadows ───────────────────────────────── */
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-xl:   0 24px 64px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px var(--color-accent-glow);
+
+  /* ── Typography ────────────────────────────── */
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Outfit', 'Inter', -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Spacing & Sizing ──────────────────────── */
+  --navbar-height: 68px;
+  --container-max: 1200px;
+  --container-pad: clamp(16px, 4vw, 40px);
+
+  /* ── Radius ────────────────────────────────── */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 999px;
+
+  /* ── Transitions ───────────────────────────── */
+  --transition:      200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+}

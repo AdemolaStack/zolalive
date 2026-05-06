@@ -1,0 +1,229 @@
+/* ═══════════════════════════════════════════════
+   ZOLA LIVE — Match Card
+   Premium glassmorphic card design
+   ═══════════════════════════════════════════════ */
+
+.match-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px 20px;
+  cursor: pointer;
+  transition: all var(--transition-slow);
+  overflow: hidden;
+}
+
+/* Subtle top highlight */
+.match-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: opacity var(--transition);
+}
+
+/* Hover ambient glow */
+.match-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), transparent 40%, transparent 60%, rgba(59, 130, 246, 0.05));
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.match-card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px var(--color-border-hover);
+}
+
+.match-card:hover::after {
+  opacity: 1;
+}
+
+.match-card:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* ── Live state ──────────────────────────────── */
+.match-card.is-live {
+  border-color: rgba(239, 68, 68, 0.2);
+  animation: borderGlow 3s ease infinite;
+}
+
+.match-card.is-live::after {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.06), transparent 50%);
+  opacity: 1;
+}
+
+/* ── League chip ─────────────────────────────── */
+.match-card-league {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+}
+
+/* ── Teams row ───────────────────────────────── */
+.match-card-teams {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.match-card-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.match-card-team-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.match-card:hover .match-card-team-logo {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.match-card-team-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.match-card-team-initials {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-text-3);
+  letter-spacing: 0.05em;
+}
+
+.match-card-team-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-2);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: color var(--transition);
+}
+
+.match-card:hover .match-card-team-name {
+  color: var(--color-text-1);
+}
+
+/* VS divider */
+.match-card-vs {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-text-3);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition);
+}
+
+.match-card:hover .match-card-vs {
+  background: var(--color-surface-3);
+  color: var(--color-text-2);
+}
+
+/* ── Footer: countdown + venue ───────────────── */
+.match-card-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.match-card-venue {
+  font-size: 11px;
+  color: var(--color-text-3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50%;
+}
+
+/* ── Countdown segments (featured inside card) ── */
+.countdown-featured {
+  display: flex;
+  gap: 6px;
+}
+
+.countdown-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 38px;
+  padding: 6px 4px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.countdown-value {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--color-text-1);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.countdown-label {
+  font-family: var(--font-display);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+  line-height: 1;
+}

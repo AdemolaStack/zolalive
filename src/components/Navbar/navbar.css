@@ -1,0 +1,512 @@
+/* ═══════════════════════════════════════════════
+   ZOLA LIVE — Liquid Glass Navbar
+   Apple-inspired frosted glass navigation
+   ═══════════════════════════════════════════════ */
+
+/* ── Main Navbar Container ───────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 16px;
+  transition: all var(--transition-slow);
+}
+
+/* Subtle bottom separator */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transition: opacity var(--transition);
+}
+
+.navbar.scrolled::after {
+  opacity: 0.5;
+}
+
+/* ── Logo — OUTSIDE the glass ────────────────── */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  z-index: 2;
+  text-decoration: none;
+  transition: transform var(--transition);
+}
+
+.navbar-logo:hover {
+  transform: scale(1.03);
+}
+
+.navbar-logo:active {
+  transform: scale(0.97);
+}
+
+.navbar-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.15));
+  transition: filter var(--transition);
+}
+
+.navbar-logo:hover .navbar-logo-img {
+  filter: drop-shadow(0 2px 12px rgba(16, 185, 129, 0.25));
+}
+
+/* ── Glass Pill — holds nav items ────────────── */
+.navbar-glass {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 0 16px;
+  height: 44px;
+  border-radius: var(--radius-full);
+
+  /* Liquid Glass Effect */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    var(--glass-inner-glow),
+    0 4px 24px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+
+  transition: all var(--transition-slow);
+  position: relative;
+}
+
+/* Animated top highlight */
+.navbar-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+/* Subtle inner gradient */
+.navbar-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 50%);
+  pointer-events: none;
+}
+
+.navbar.scrolled .navbar-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    var(--glass-inner-glow),
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Search inside glass ─────────────────────── */
+.navbar-search-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Right section inside glass ──────────────── */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Leagues Button (inside glass) ───────────── */
+.navbar-leagues-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.navbar-leagues-btn:hover {
+  color: var(--color-text-1);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar-leagues-btn.active {
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.navbar-leagues-btn .chevron {
+  transition: transform var(--transition);
+  opacity: 0.6;
+}
+
+.navbar-leagues-btn.active .chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* ── Auth Buttons (inside glass) ─────────────── */
+.auth-btn {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.auth-btn-login {
+  color: var(--color-text-2);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-btn-login:hover {
+  color: var(--color-text-1);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.auth-btn-register {
+  color: #000;
+  background: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent));
+  border: none;
+  box-shadow: 0 2px 12px var(--color-accent-glow);
+}
+
+.auth-btn-register:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--color-accent-glow);
+}
+
+.auth-btn-register:active {
+  transform: translateY(0);
+}
+
+/* ── Search Input (inside glass) ─────────────── */
+.navbar-search {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+}
+
+.navbar-search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-full);
+  padding: 0 12px;
+  height: 34px;
+  transition: all var(--transition);
+}
+
+.navbar-search-input-wrapper.focused {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+}
+
+.navbar-search-input-wrapper input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--color-text-1);
+  font-size: 13px;
+  font-family: var(--font-body);
+  min-width: 0;
+}
+
+.navbar-search-input-wrapper input::placeholder {
+  color: var(--color-text-3);
+}
+
+.navbar-search-clear {
+  color: var(--color-text-3);
+  line-height: 0;
+  padding: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.navbar-search-clear:hover {
+  color: var(--color-text-1);
+}
+
+/* ── Search Results Dropdown ─────────────────── */
+.navbar-search-results {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  list-style: none;
+  overflow: hidden;
+  z-index: 300;
+  animation: slideDown 0.2s var(--ease-out-expo) forwards;
+  backdrop-filter: blur(20px);
+}
+
+.navbar-search-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+  font-size: 13px;
+}
+
+.navbar-search-result-item:last-child {
+  border-bottom: none;
+}
+
+.navbar-search-result-item:hover {
+  background: var(--color-surface-2);
+}
+
+.navbar-search-result-item .teams-text {
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.navbar-search-result-item .vs-text {
+  color: var(--color-text-3);
+  font-weight: 400;
+  margin: 0 5px;
+}
+
+/* ── Leagues Dropdown (rendered via portal) ──── */
+.leagues-dropdown {
+  width: 500px;
+  display: flex;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  z-index: 9999;
+  animation: slideDown 0.25s var(--ease-out-expo) forwards;
+  backdrop-filter: blur(20px);
+}
+
+.leagues-dropdown-list {
+  width: 195px;
+  border-right: 1px solid var(--color-border);
+  padding: 6px 0;
+}
+
+.leagues-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.leagues-dropdown-item:hover,
+.leagues-dropdown-item.active {
+  background: var(--color-accent-light);
+  border-left-color: var(--color-accent);
+}
+
+.leagues-dropdown-item .league-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-1);
+  transition: color var(--transition);
+}
+
+.leagues-dropdown-item:hover .league-name,
+.leagues-dropdown-item.active .league-name {
+  color: var(--color-accent);
+}
+
+.leagues-dropdown-item .league-country {
+  font-size: 11px;
+  color: var(--color-text-3);
+}
+
+.leagues-dropdown-detail {
+  flex: 1;
+  padding: 16px;
+}
+
+.leagues-dropdown-detail-title {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.leagues-dropdown-detail-title::before {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 1px;
+}
+
+.leagues-subleague-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.leagues-subleague-btn:hover {
+  background: var(--color-surface-2);
+}
+
+.leagues-subleague-btn .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+
+.leagues-subleague-btn:hover .dot {
+  opacity: 1;
+}
+
+.leagues-subleague-btn .name {
+  font-size: 13px;
+  color: var(--color-text-2);
+  transition: color var(--transition);
+}
+
+.leagues-subleague-btn:hover .name {
+  color: var(--color-text-1);
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .navbar-glass {
+    padding: 0 6px 0 10px;
+    height: 40px;
+    gap: 6px;
+  }
+
+  .navbar-logo-text {
+    font-size: 18px;
+  }
+
+  .navbar-logo-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navbar-search {
+    max-width: 200px;
+  }
+
+  .navbar-search-input-wrapper {
+    height: 30px;
+    padding: 0 10px;
+  }
+
+  .auth-btn {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .navbar-leagues-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .leagues-dropdown {
+    width: calc(100vw - 32px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-search {
+    max-width: 140px;
+  }
+  .auth-btn-login {
+    display: none;
+  }
+}
