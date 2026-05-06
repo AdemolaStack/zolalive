@@ -613,13 +613,15 @@
     width: 100%;
     justify-content: space-between;
     order: 1;
-    z-index: 2;
+    position: static;
+    z-index: auto;
   }
 
   .navbar-search-wrapper {
     width: 100%;
     order: 2;
-    z-index: 1;
+    position: static;
+    z-index: auto;
   }
 
   .navbar-search {
