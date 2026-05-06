@@ -100,14 +100,14 @@ export const matches = [
   {
     id: "match-ucl-sf2",
     leagueId: "champions-league",
-    status: "upcoming",
-    kickoff: "2026-05-05T20:00:00Z",
+    status: "live",
+    kickoff: "2026-05-06T19:00:00Z",
     featured: true,
     homeTeam: { name: "Arsenal",         shortName: "ARS", logo: "/assets/logos/teams/arsenal.png" },
     awayTeam: { name: "Atletico Madrid", shortName: "ATM", logo: "/assets/logos/teams/atletico.png" },
     venue: "Emirates Stadium",
     round: "Semi-Final 2nd Leg (1-1 agg)",
-    streamUrl: "",
+    streamUrl: "https://pooembed.eu/embed/ucl/2026-05-05/ars-atm",
   },
 
   // ── Champions League Final ────────────────────
