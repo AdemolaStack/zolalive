@@ -608,8 +608,18 @@
     animation: slideDown 0.25s var(--ease-out-expo) forwards;
   }
 
+  /* On mobile: show actions FIRST, then search below */
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    order: 1;
+    z-index: 2;
+  }
+
   .navbar-search-wrapper {
     width: 100%;
+    order: 2;
+    z-index: 1;
   }
 
   .navbar-search {
@@ -624,11 +634,6 @@
 
   .navbar-search-input-wrapper input {
     font-size: 13px;
-  }
-
-  .navbar-actions {
-    width: 100%;
-    justify-content: space-between;
   }
 
   .navbar-leagues-btn {
