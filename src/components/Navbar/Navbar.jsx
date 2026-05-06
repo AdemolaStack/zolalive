@@ -8,6 +8,7 @@ import "./navbar.css";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,23 +17,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu on navigation
+  useEffect(() => {
+    const close = () => setMobileOpen(false);
+    window.addEventListener("popstate", close);
+    return () => window.removeEventListener("popstate", close);
+  }, []);
+
   return (
-    <header className={`navbar${scrolled ? " scrolled" : ""}`}>
-      {/* Logo — OUTSIDE the glass pill */}
+    <header className={`navbar${scrolled ? " scrolled" : ""}${mobileOpen ? " mobile-open" : ""}`}>
+      {/* Logo */}
       <button
         className="navbar-logo"
-        onClick={() => navigate("/")}
+        onClick={() => { navigate("/"); setMobileOpen(false); }}
         aria-label="Go to homepage"
       >
-        <img
-          src={logoImg}
-          alt="ZolaLive"
-          className="navbar-logo-img"
-        />
+        <img src={logoImg} alt="ZolaLive" className="navbar-logo-img" />
       </button>
 
-      {/* Glass Pill — contains search, leagues btn, auth */}
-      <div className="navbar-glass">
+      {/* Hamburger button — mobile only */}
+      <button
+        className="navbar-hamburger"
+        onClick={() => setMobileOpen(!mobileOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className={`hamburger-line${mobileOpen ? " open" : ""}`} />
+        <span className={`hamburger-line${mobileOpen ? " open" : ""}`} />
+        <span className={`hamburger-line${mobileOpen ? " open" : ""}`} />
+      </button>
+
+      {/* Glass Pill — desktop: always visible, mobile: toggle */}
+      <div className={`navbar-glass${mobileOpen ? " mobile-visible" : ""}`}>
         <div className="navbar-search-wrapper">
           <SearchBar />
         </div>
@@ -42,6 +57,11 @@ export default function Navbar() {
           <AuthButtons />
         </div>
       </div>
+
+      {/* Mobile backdrop */}
+      {mobileOpen && (
+        <div className="navbar-backdrop" onClick={() => setMobileOpen(false)} />
+      )}
     </header>
   );
 }
