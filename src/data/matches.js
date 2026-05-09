@@ -41,7 +41,7 @@ export const matches = [
   {
     id: "match-007",
     leagueId: "premier-league",
-    status: "upcoming",
+    status: "live",
     kickoff: "2026-05-09T20:00:00Z",
     featured: true,
     homeTeam: { name: "Liverpool", shortName: "LIV", logo: "/assets/logos/teams/liverpool.png" },
