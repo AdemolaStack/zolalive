@@ -59,6 +59,18 @@ export const leagues = [
       { id: "seriea-top-scorers", name: "Top Scorers" },
     ],
   },
+  {
+    id: "ligue-1",
+    name: "Ligue 1",
+    shortName: "L1",
+    country: "France",
+    logo: "/assets/logos/leagues/ligue1.png",
+    subleagues: [
+      { id: "ligue1-matches",     name: "Matches" },
+      { id: "ligue1-standings",   name: "Standings" },
+      { id: "ligue1-top-scorers", name: "Top Scorers" },
+    ],
+  },
 
   // ─── CUP COMPETITIONS ────────────────────────
   {
