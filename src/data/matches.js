@@ -42,7 +42,7 @@ export const matches = [
     leagueId: "premier-league",
     status: "live",
     kickoff: "2026-05-10T15:30:00Z",
-    featured: true,
+    featured: false,
     homeTeam: { name: "West Ham United", shortName: "WHU", logo: "/assets/logos/teams/westham.png" },
     awayTeam: { name: "Arsenal", shortName: "ARS", logo: "/assets/logos/teams/arsenal.png" },
     venue: "London Stadium",
@@ -239,14 +239,14 @@ export const matches = [
   {
     id: "match-facup-final",
     leagueId: "fa-cup",
-    status: "upcoming",
+    status: "live",
     kickoff: "2026-05-16T15:00:00Z",
-    featured: false,
+    featured: true,
     homeTeam: { name: "Chelsea", shortName: "CHE", logo: "/assets/logos/teams/chelsea.png" },
     awayTeam: { name: "Manchester City", shortName: "MCI", logo: "/assets/logos/teams/mancity.png" },
     venue: "Wembley Stadium",
     round: "Final",
-    streamUrl: "",
+    streamUrl: "https://pooembed.eu/embed/english-fa-cup/2026-05-16/che-mci",
   },
 
   // ── DFB-Pokal Final ───────────────────────────

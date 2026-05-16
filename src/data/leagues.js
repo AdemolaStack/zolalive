@@ -6,8 +6,8 @@ export const leagues = [
     country: "England",
     logo: "/assets/logos/leagues/epl.png",
     subleagues: [
-      { id: "epl-matches",     name: "Matches" },
-      { id: "epl-standings",   name: "Standings" },
+      { id: "epl-matches", name: "Matches" },
+      { id: "epl-standings", name: "Standings" },
       { id: "epl-top-scorers", name: "Top Scorers" },
     ],
   },
@@ -18,8 +18,8 @@ export const leagues = [
     country: "Spain",
     logo: "/assets/logos/leagues/laliga.png",
     subleagues: [
-      { id: "laliga-matches",     name: "Matches" },
-      { id: "laliga-standings",   name: "Standings" },
+      { id: "laliga-matches", name: "Matches" },
+      { id: "laliga-standings", name: "Standings" },
       { id: "laliga-top-scorers", name: "Top Scorers" },
     ],
   },
@@ -30,9 +30,9 @@ export const leagues = [
     country: "Europe",
     logo: "/assets/logos/leagues/ucl.png",
     subleagues: [
-      { id: "ucl-matches",       name: "Matches" },
-      { id: "ucl-semifinals",    name: "Semifinals" },
-      { id: "ucl-final",         name: "Final" },
+      { id: "ucl-matches", name: "Matches" },
+      { id: "ucl-semifinals", name: "Semifinals" },
+      { id: "ucl-final", name: "Final" },
     ],
   },
   {
@@ -42,8 +42,8 @@ export const leagues = [
     country: "Germany",
     logo: "/assets/logos/leagues/bundesliga.png",
     subleagues: [
-      { id: "bl-matches",     name: "Matches" },
-      { id: "bl-standings",   name: "Standings" },
+      { id: "bl-matches", name: "Matches" },
+      { id: "bl-standings", name: "Standings" },
       { id: "bl-top-scorers", name: "Top Scorers" },
     ],
   },
@@ -54,8 +54,8 @@ export const leagues = [
     country: "Italy",
     logo: "/assets/logos/leagues/seriea.png",
     subleagues: [
-      { id: "seriea-matches",     name: "Matches" },
-      { id: "seriea-standings",   name: "Standings" },
+      { id: "seriea-matches", name: "Matches" },
+      { id: "seriea-standings", name: "Standings" },
       { id: "seriea-top-scorers", name: "Top Scorers" },
     ],
   },
@@ -66,8 +66,8 @@ export const leagues = [
     country: "France",
     logo: "/assets/logos/leagues/ligue1.png",
     subleagues: [
-      { id: "ligue1-matches",     name: "Matches" },
-      { id: "ligue1-standings",   name: "Standings" },
+      { id: "ligue1-matches", name: "Matches" },
+      { id: "ligue1-standings", name: "Standings" },
       { id: "ligue1-top-scorers", name: "Top Scorers" },
     ],
   },
@@ -112,8 +112,8 @@ export const leagues = [
     country: "USA",
     logo: "/assets/logos/leagues/nba.png",
     subleagues: [
-      { id: "nba-eastern",  name: "Eastern Conference" },
-      { id: "nba-western",  name: "Western Conference" },
+      { id: "nba-eastern", name: "Eastern Conference" },
+      { id: "nba-western", name: "Western Conference" },
       { id: "nba-playoffs", name: "Playoffs" },
     ],
   },
